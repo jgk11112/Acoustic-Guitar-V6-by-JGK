@@ -1,0 +1,6 @@
+AUTO BUILD IS INCLUDED
+
+The required workflow is:
+.github/workflows/build-vst3.yml
+
+When these files are committed to GitHub, the Windows VST3 build starts automatically.

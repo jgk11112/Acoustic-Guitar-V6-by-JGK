@@ -1,0 +1,13 @@
+ACOUSTIC GUITAR BY JGK V6 — GITHUB UPLOAD
+
+1. Open your EMPTY Acoustic-Guitar-V6-by-JGK repository.
+2. Extract this ZIP.
+3. Open the extracted folder.
+4. Press CTRL+A so EVERY item is selected — including the .github folder.
+5. Drag the selected items onto GitHub's Upload files page.
+6. Click Commit changes.
+
+That is it. GitHub Actions will build the Windows VST3 automatically.
+
+IMPORTANT: .github/workflows/build-vst3.yml is already included.
+Do not install JUCE, Visual Studio or CMake on your PC for this workflow.
