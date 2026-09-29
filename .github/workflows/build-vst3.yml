@@ -1,0 +1,33 @@
+name: Build Acoustic Guitar by JGK V6
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-windows-vst3:
+    runs-on: windows-2022
+
+    steps:
+      - name: Get project
+        uses: actions/checkout@v4
+
+      - name: Configure
+        run: cmake -S . -B build -G "Visual Studio 17 2022" -A x64
+
+      - name: Build VST3
+        run: cmake --build build --config Release --target AcousticGuitarByJGK_VST3
+
+      - name: Prepare download
+        shell: powershell
+        run: |
+          New-Item -ItemType Directory -Force -Path Package
+          Copy-Item -Recurse "build/AcousticGuitarByJGK_artefacts/Release/VST3/Acoustic Guitar by JGK.vst3" Package/
+          Copy-Item "INSTALL_PLUGIN.bat" Package/
+
+      - name: Upload ready plugin
+        uses: actions/upload-artifact@v4
+        with:
+          name: Acoustic-Guitar-by-JGK-V6-Windows
+          path: Package/**
